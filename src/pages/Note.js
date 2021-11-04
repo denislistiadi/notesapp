@@ -10,33 +10,33 @@ function Note({ match, history }) {
 
   let getNote = async() => {
     if(noteId === 'new') return
-    let response = await fetch(`http://localhost:5000/notes/${noteId}`)
+    let response = await fetch(`http://127.0.0.1:5000/notes/${noteId}`)
     let data= await response.json()
     setNote(data)
   }
 
   let createNote = async () => {
-    await fetch (`http://localhost:5000/notes/`, {
+    await fetch (`http://127.0.0.1:5000/notes/`, {
       method: 'POST',
       headers:{
         'Content-Type':'application/json'
       },
-      body:JSON.stringify({...note, 'update': new Date()})
+      body:JSON.stringify({...note, 'updated': new Date()})
     })
   }
 
   let updateNote = async () => {
-    await fetch (`http://localhost:5000/notes/${noteId}`, {
+    await fetch (`http://127.0.0.1:5000/notes/${noteId}`, {
       method: 'PUT',
       headers:{
         'Content-Type':'application/json'
       },
-      body:JSON.stringify({...note, 'update': new Date()})
+      body:JSON.stringify({...note, 'updated': new Date()})
     })
   }
 
   let deleteNote = async () => {
-    await fetch(`http://localhost:5000/notes/${noteId}`, {
+    await fetch(`http://127.0.0.1:5000/notes/${noteId}`, {
       method: 'DELETE',
       headers:{
         'Content-Type':'application/json'
